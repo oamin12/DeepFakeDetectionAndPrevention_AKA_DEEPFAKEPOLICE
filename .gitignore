@@ -1,0 +1,4 @@
+Datasets/*
+Test/*
+__pycache__/*
+Results/_checkpoints/*
