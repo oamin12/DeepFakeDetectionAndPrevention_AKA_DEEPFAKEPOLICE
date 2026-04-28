@@ -5,7 +5,9 @@ import sys
 import torch
 import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
-from PIL import Image
+from PIL import Image, ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
+
 from torchvision import transforms
 from tqdm.auto import tqdm
 

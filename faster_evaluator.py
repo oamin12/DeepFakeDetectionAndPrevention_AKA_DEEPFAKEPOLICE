@@ -1,7 +1,8 @@
 from pathlib import Path
 import json
-from PIL import Image
+from PIL import Image, ImageFile
 from tqdm.notebook import tqdm
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 import torch
 from torch.utils.data import Dataset, DataLoader
