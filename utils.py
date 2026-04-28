@@ -18,6 +18,7 @@ def get_dataset_roots():
         "DeepDetect-2025": base / "DeepDetect-2025" / "ddata",          # e7tmal yb2a msh bye2raha sa7
         "Deepfake-vs-Real-v2": base / "Deepfake-vs-Real-v2",
         "gravex200k": base / "gravex200k" / "my_real_vs_ai_dataset" / "my_real_vs_ai_dataset",
+        "nuriachandra_Deepfake-Eval-2024": base / "nuriachandra_Deepfake-Eval-2024",
     }
 
 
