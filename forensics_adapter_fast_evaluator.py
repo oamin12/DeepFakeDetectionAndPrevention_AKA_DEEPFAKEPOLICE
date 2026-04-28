@@ -117,7 +117,7 @@ def load_forensics_adapter(
 
 # ---------- image preprocessing ----------
 def get_forensics_adapter_transform(config):
-    size = int(config.get("resolution", 256))
+    size = 256
     mean = config.get("mean", [0.48145466, 0.4578275, 0.40821073])
     std = config.get("std", [0.26862954, 0.26130258, 0.27577711])
 
@@ -155,7 +155,7 @@ def collate_forensics_adapter(batch, config):
     splits = [x["split"] for x in batch]
 
     bsz = images.shape[0]
-    resolution = int(config.get("resolution", 256))
+    resolution = 256
 
     # The official test dataset returns these fields even during inference.
     # For external image folders we do not have masks/landmarks, so we pass safe zero tensors.
@@ -163,10 +163,15 @@ def collate_forensics_adapter(batch, config):
     xray = torch.zeros((bsz, 1, resolution, resolution), dtype=torch.float32)
     landmark = None
 
-    # DS.forward accesses if_boundary directly. For 224/16 = 14 => 196 patch flags.
-    patch_label = torch.zeros((bsz, 196), dtype=torch.long)
-    clip_patch_label = torch.zeros((bsz, 256), dtype=torch.long)  # 224/14 = 16 => 256
-    if_boundary = torch.zeros((bsz, 196), dtype=torch.long)
+    # DS.forward uses the adapter ViT patch grid for xray masking.
+    # With resolution=256 and patch size=16, the grid is 16x16 = 256 patches.
+    # Passing 196 causes: size of tensor a (256) must match tensor b (196).
+    num_patches = 16 * 16  # ForensicsAdapter xray head reshapes to 16x16
+
+    patch_label = torch.zeros((bsz, num_patches), dtype=torch.long)
+    clip_patch_label = torch.zeros((bsz, num_patches), dtype=torch.long)
+    if_boundary = torch.ones((bsz, num_patches), dtype=torch.long)
+    
 
     data_dict = {
         "image": images,
