@@ -3,3 +3,6 @@ Test/*
 __pycache__/*
 Results/_checkpoints/*
 .vscode/*
+MLEP/
+FSFM-CVPR25/
+fsfm_weights/
