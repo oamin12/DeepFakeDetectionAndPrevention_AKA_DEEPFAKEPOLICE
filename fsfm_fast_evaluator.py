@@ -216,10 +216,12 @@ def predict_dataloader_fsfm(
     checkpoint_file=None,
     checkpoint_every=100,
     threshold=0.5,
+    invert_labels=False,
     desc="",
 ):
     """
     FSFM outputs 2-class logits [real, fake]. We use softmax[:,1] as fake_score.
+    If invert_labels=True, the final predicted label is flipped.
     """
     model.eval()
     buffer = []
@@ -242,7 +244,8 @@ def predict_dataloader_fsfm(
         for sample_id, split, true_label, fake_score in zip(
             batch["ids"], batch["splits"], batch["true_labels"], fake_scores
         ):
-            pred_label = 1 if fake_score >= threshold else 0
+            raw_pred_label = 1 if fake_score >= threshold else 0
+            pred_label = 1 - raw_pred_label if invert_labels else raw_pred_label
             buffer.append({
                 "id": sample_id,
                 "split": split,
@@ -271,7 +274,7 @@ def _load_checkpoint_rows(checkpoint_file):
     return rows
 
 
-def _build_result(rows, model_name, dataset_name, dataset_root, threshold):
+def _build_result(rows, model_name, dataset_name, dataset_root, threshold, invert_labels=False):
     tp = tn = fp = fn = 0
     for row in rows:
         y_true = int(row["true_label"])
@@ -291,6 +294,7 @@ def _build_result(rows, model_name, dataset_name, dataset_root, threshold):
         "dataset_root": str(dataset_root),
         "num_samples": len(rows),
         "threshold": threshold,
+        "invert_labels": invert_labels,
         "counts": {"TP": tp, "TN": tn, "FP": fp, "FN": fn},
         "metrics": compute_metrics(tp, tn, fp, fn),
         "misclassified_ids": {
@@ -312,6 +316,7 @@ def evaluate_dataset_fsfm_fast(
     num_workers=0,
     max_batches=None,
     threshold=0.5,
+    invert_labels=False,
     image_size=224,
     mean=None,
     std=None,
@@ -358,6 +363,7 @@ def evaluate_dataset_fsfm_fast(
         checkpoint_file=checkpoint_file,
         checkpoint_every=checkpoint_every,
         threshold=threshold,
+        invert_labels=invert_labels,
         desc=f"{progress_prefix}{dataset_name}",
     )
 
@@ -374,6 +380,7 @@ def evaluate_dataset_fsfm_fast(
         dataset_name=dataset_name,
         dataset_root=dataset_root,
         threshold=threshold,
+        invert_labels=invert_labels,
     )
 
     with open(result_file, "w", encoding="utf-8") as f:
@@ -391,6 +398,7 @@ def evaluate_all_datasets_fsfm_fast(
     num_workers=0,
     max_batches=None,
     threshold=0.5,
+    invert_labels=False,
     image_size=224,
     mean=None,
     std=None,
@@ -415,6 +423,7 @@ def evaluate_all_datasets_fsfm_fast(
             num_workers=num_workers,
             max_batches=max_batches,
             threshold=threshold,
+            invert_labels=invert_labels,
             image_size=image_size,
             mean=mean,
             std=std,
@@ -440,6 +449,7 @@ if __name__ == "__main__":
         num_workers=0,
         max_batches=3,
         threshold=0.5,
+        invert_labels=False,
     )
 
     print(json.dumps(results, indent=2))
