@@ -1,0 +1,113 @@
+﻿Model,20K_real_and_deepfake_images,DeepDetect-2025,Deepfake-vs-Real-v2,gravex200k,nuriachandra_Deepfake-Eval-2024
+CHELSEA234_M2F2_Det,"Acc: 0.7620
+Prec: 0.7379
+Rec: 0.6799
+F1: 0.7077","Acc: 0.8065
+Prec: 0.9277
+Rec: 0.6317
+F1: 0.7516","Acc: 0.7130
+Prec: 0.8102
+Rec: 0.5509
+F1: 0.6558","Acc: 0.5854
+Prec: 0.7943
+Rec: 0.2305
+F1: 0.3573","Acc: 0.4959
+Prec: 0.6699
+Rec: 0.3440
+F1: 0.4545"
+CommunityForensics-DeepfakeDet-ViT_TEST,"Acc: 0.5018
+Prec: 0.4482
+Rec: 0.7601
+F1: 0.5639","Acc: 0.4813
+Prec: 0.4688
+Rec: 0.8945
+F1: 0.6152","Acc: 0.4589
+Prec: 0.4724
+Rec: 0.7721
+F1: 0.5862","Acc: 0.4901
+Prec: 0.4942
+Rec: 0.8439
+F1: 0.6234","Acc: 0.5953
+Prec: 0.6491
+Rec: 0.7341
+F1: 0.6890"
+Defocus_GT_Xception_Deepfakes,"Acc: 0.6149
+Prec: 0.7951
+Rec: 0.1229
+F1: 0.2129","Acc: 0.5207
+Prec: 0.1048
+Rec: 0.0045
+F1: 0.0087","Acc: 0.5226
+Prec: 0.6867
+Rec: 0.0703
+F1: 0.1275","Acc: 0.5558
+Prec: 0.6538
+Rec: 0.2371
+F1: 0.3480","Acc: 0.4001
+Prec: 0.7234
+Rec: 0.0285
+F1: 0.0549"
+FSFM_ViT_B16_FFpp_c23,"Acc: 0.6244
+Prec: 0.7056
+Rec: 0.1949
+F1: 0.3054","Acc: 0.5195
+Prec: 0.3150
+Rec: 0.0312
+F1: 0.0568","Acc: 0.5310
+Prec: 0.6319
+Rec: 0.1323
+F1: 0.2188","Acc: 0.5819
+Prec: 0.7511
+Rec: 0.2449
+F1: 0.3694","Acc: 0.4068
+Prec: 0.7237
+Rec: 0.0461
+F1: 0.0868"
+ForensicsAdapter,"Acc: 0.6238
+Prec: 0.5936
+Rec: 0.3561
+F1: 0.4452","Acc: 0.5510
+Prec: 0.5648
+Rec: 0.1358
+F1: 0.2189","Acc: 0.7378
+Prec: 0.8906
+Rec: 0.5379
+F1: 0.6707","Acc: 0.5831
+Prec: 0.7378
+Rec: 0.2578
+F1: 0.3821","Acc: 0.4462
+Prec: 0.6529
+Rec: 0.1988
+F1: 0.3048"
+MLEP_ResNet50,"Acc: 0.6297
+Prec: 0.5389
+Rec: 0.8738
+F1: 0.6667","Acc: 0.4622
+Prec: 0.4626
+Rec: 0.9920
+F1: 0.6310","Acc: 0.6758
+Prec: 0.6318
+Rec: 0.8316
+F1: 0.7180","Acc: 0.5000
+Prec: 0.5000
+Rec: 0.9998
+F1: 0.6666","Acc: 0.5738
+Prec: 0.6027
+Rec: 0.8859
+F1: 0.7174"
+prithivMLmods_Deep-Fake-Detector-v2-Model,"Acc: 0.3955
+Prec: 0.3926
+Rec: 0.7800
+F1: 0.5223","Acc: 0.4712
+Prec: 0.4461
+Rec: 0.5841
+F1: 0.5059","Acc: 0.6277
+Prec: 0.5754
+Rec: 0.9536
+F1: 0.7177","Acc: 0.5173
+Prec: 0.5153
+Rec: 0.5837
+F1: 0.5474","Acc: 0.6132
+Prec: 0.6151
+Rec: 0.9799
+F1: 0.7557"
