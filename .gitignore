@@ -6,3 +6,6 @@ Results/_checkpoints/*
 MLEP/
 FSFM-CVPR25/
 fsfm_weights/
+M2F2_DET/
+ForensicsAdapter/
+Defocus-Deepfake-Detection/
