@@ -186,7 +186,7 @@ def run_one_epoch(
     context = torch.enable_grad() if train else torch.no_grad()
 
     with context:
-        for batch in tqdm(loader, desc=desc, dynamic_ncols=True, leave=True):
+        for batch in tqdm(loader, desc=desc, dynamic_ncols=True, leave=True, position=0,):
             images = batch["images"].to(device, non_blocking=True).float()
             labels = batch["labels"].to(device, non_blocking=True).float()
 
